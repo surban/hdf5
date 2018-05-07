@@ -14,7 +14,7 @@ before_install:
 script: 
   - bash scripts/build_linux.sh
 after_success:
-  - rm -f build_linux_bin/libhdf5_tools*
+  - rm -f build_linux/bin/libhdf5_tools*
   - zip hdf5_linux.zip build_linux/bin/*.so*
 deploy:
   provider: releases
