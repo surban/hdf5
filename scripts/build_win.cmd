@@ -1,4 +1,4 @@
-set ARGS=-DCMAKE_TOOLCHAIN_FILE=%~dp0\..\build_vcpkg\scripts\buildsystems\vcpkg.cmake -DHDF5_BUILD_EXAMPLES:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DHDF5_BUILD_CPP_LIB:BOOL=OFF -DHDF5_ENABLE_Z_LIB_SUPPORT:BOOL=ON -DCMAKE_CONFIGURATION_TYPES=RelWithDebInfo ..
+set ARGS=-DCMAKE_TOOLCHAIN_FILE=%~dp0\..\build_vcpkg\scripts\buildsystems\vcpkg.cmake -DHDF5_BUILD_EXAMPLES:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DHDF5_BUILD_CPP_LIB:BOOL=OFF -DHDF5_ENABLE_Z_LIB_SUPPORT:BOOL=ON -DHDF5_ENABLE_THREADSAFE:BOOL=ON -DCMAKE_CONFIGURATION_TYPES=RelWithDebInfo ..
 
 for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.Component.MSBuild -property installationPath`) do (
   set InstallDir=%%i
