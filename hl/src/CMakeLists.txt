@@ -43,7 +43,11 @@ set (install_targets ${HDF5_HL_LIB_TARGET})
 if (BUILD_SHARED_LIBS)
   add_library (${HDF5_HL_LIBSH_TARGET} SHARED ${HL_SOURCES} ${HL_HEADERS})
   TARGET_C_PROPERTIES (${HDF5_HL_LIBSH_TARGET} SHARED " " " ")
-  target_link_libraries (${HDF5_HL_LIBSH_TARGET} PUBLIC ${HDF5_LIBSH_TARGET})
+  if (UNIX)
+    target_link_libraries (${HDF5_HL_LIBSH_TARGET} PUBLIC ${HDF5_LIBSH_TARGET} -Wl,-rpath=$ORIGIN)
+  else (UNIX)
+    target_link_libraries (${HDF5_HL_LIBSH_TARGET} PUBLIC ${HDF5_LIBSH_TARGET})
+  endif (UNIX)
   H5_SET_LIB_OPTIONS (${HDF5_HL_LIBSH_TARGET} ${HDF5_HL_LIB_NAME} SHARED ${HDF5_HL_PACKAGE_SOVERSION})
   set_target_properties (${HDF5_HL_LIBSH_TARGET} PROPERTIES
       FOLDER libraries/hl
