@@ -40,3 +40,6 @@ genstub hdf5 libhdf5.so.101 true
 genstub hdf5_hl "libhdf5.so.101 libhdf5_hl.so.101" true
 cd ../..
 
+mkdir linux64
+mv build_linux/bin/libhdf5.so build_linux/bin/libhdf5.so.101 build_linux/bin/libhdf5_hl.so build_linux/bin/libhdf5_hl.so.101 linux64/
+zip hdf5_linux.zip linux64/*
