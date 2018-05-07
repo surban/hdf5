@@ -24,3 +24,9 @@ cmake -G "Visual Studio 15 2017" %ARGS%
 "%InstallDir%\MSBuild\15.0\Bin\MSBuild.exe" /m HDF5.sln  
 cd ..
 
+
+mkdir bin32
+copy build_win32\bin\RelWithDebInfo\hdf5.dll build_win32\bin\RelWithDebInfo\hdf5_hl.dll build_win32\bin\RelWithDebInfo\zlib1.dll bin32\
+mkdir bin64
+copy build_win64\bin\RelWithDebInfo\hdf5.dll build_win64\bin\RelWithDebInfo\hdf5_hl.dll build_win64\bin\RelWithDebInfo\zlib1.dll bin64\
+7z a hdf5_windows.zip bin32\*.dll bin64\*.dll
