@@ -1,0 +1,13 @@
+-
+  image: Visual Studio 2017
+
+  build_script:
+    - scripts\build_win.cmd
+  
+  after_build:
+    - 7z a hdf5_windows.zip build_win32\bin\RelWithDebInfo\*.dll build_win64\bin\RelWithDebInfo\*.dll
+
+  artifacts:
+    - path: hdf5_windows.zip
+      name: hdf5_windows
+     
