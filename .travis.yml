@@ -1,0 +1,21 @@
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+#    - os: osx
+#      osx_image: xcode9.3
+language: c
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install zlib1g-dev ; fi
+#  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then sudo rm '/usr/local/include/c++' ; brew update ; brew install hdf5 ; fi
+script: 
+  - bash scripts/build_linux.sh
+after_success:
+  - zip --symlinks hdf5_linux.zip build_linux/bin/*.so*
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOEN
+  file: hdf5_linux.zip
+  skip_cleanup: true
+  on:
+    tags: true
