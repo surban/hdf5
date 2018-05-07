@@ -18,7 +18,7 @@ after_success:
   - zip --symlinks hdf5_linux.zip build_linux/bin/*.so*
 deploy:
   provider: releases
-  api_key: $GITHUB_TOEN
+  api_key: $GITHUB_TOKEN
   file: hdf5_linux.zip
   skip_cleanup: true
   on:
