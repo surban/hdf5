@@ -1,0 +1,25 @@
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+#    - os: osx
+#      osx_image: xcode9.3
+language: c
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then wget -q -O cmake.sh https://cmake.org/files/v3.11/cmake-3.11.1-Linux-x86_64.sh; mkdir -p /usr/local/cmake ; sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local/cmake ; export PATH=/usr/local/cmake/bin:$PATH ; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install zlib1g-dev ; fi
+  - which cmake
+  - cmake --version
+#  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then sudo rm '/usr/local/include/c++' ; brew update ; brew install hdf5 ; fi
+script: 
+  - bash scripts/build_linux.sh
+after_success:
+  - rm -f build_linux_bin/libhdf5_tools*
+  - zip hdf5_linux.zip build_linux/bin/*.so*
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: hdf5_linux.zip
+  skip_cleanup: true
+  on:
+    tags: true
