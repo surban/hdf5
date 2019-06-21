@@ -33,13 +33,13 @@ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DHDF5_BUILD_EXAMPLES:BOOL=OFF -DBUILD_T
 make -j
 cd bin
 rm -f libhdf5.so libhdf5_hl.so
-rm -f libhdf5.so.101 libhdf5_hl.so.101
-mv libhdf5.so.100.5.0 libhdf5.so.101
-mv libhdf5_hl.so.100.5.0 libhdf5_hl.so.101
-genstub hdf5 libhdf5.so.101 true
-genstub hdf5_hl "libhdf5.so.101 libhdf5_hl.so.101" true
+rm -f libhdf5.so.103 libhdf5_hl.so.100
+mv libhdf5.so.103.1.0 libhdf5.so.103
+mv libhdf5_hl.so.100.1.2 libhdf5_hl.so.100
+genstub hdf5 libhdf5.so.103 true
+genstub hdf5_hl "libhdf5.so.103 libhdf5_hl.so.100" true
 cd ../..
 
 mkdir linux64
-mv build_linux/bin/libhdf5.so build_linux/bin/libhdf5.so.101 build_linux/bin/libhdf5_hl.so build_linux/bin/libhdf5_hl.so.101 linux64/
+mv build_linux/bin/libhdf5.so build_linux/bin/libhdf5.so.103 build_linux/bin/libhdf5_hl.so build_linux/bin/libhdf5_hl.so.100 linux64/
 zip hdf5_linux.zip linux64/*
