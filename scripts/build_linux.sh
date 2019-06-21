@@ -34,8 +34,8 @@ make -j
 cd bin
 rm -f libhdf5.so libhdf5_hl.so
 rm -f libhdf5.so.101 libhdf5_hl.so.101
-mv libhdf5.so.100.2.0 libhdf5.so.101
-mv libhdf5_hl.so.100.2.0 libhdf5_hl.so.101
+mv libhdf5.so.100.5.0 libhdf5.so.101
+mv libhdf5_hl.so.100.5.0 libhdf5_hl.so.101
 genstub hdf5 libhdf5.so.101 true
 genstub hdf5_hl "libhdf5.so.101 libhdf5_hl.so.101" true
 cd ../..
