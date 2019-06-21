@@ -12,7 +12,7 @@
     description: 'Windows build'
     provider: GitHub
     auth_token:
-      secure: 9XUiMAhBqA/nQHdk61d4qwYu9RrKFaNyrZyjKaXGeoM1wKdgl5UqWmAvltpHB8Yd
+      secure: dz0glGglRAbGLuSbKSPGK9QoxMQQGgDzmKNticKzrx0JPOn9fqE57Bb5R2I28FF1
     artifact: hdf5_windows.zip
     on:
       appveyor_repo_tag: true        
